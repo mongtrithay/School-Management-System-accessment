@@ -1,12 +1,12 @@
 import classModel from "../models/classModel.js";
 
 export const createClass = async (req, res) => {
-  const { className, roomNumber} = req.body;
+  const { className, roomNumber } = req.body;
   try {
     const newClass = new classModel({
       className,
       roomNumber,
-      new: true
+      new: true,
     });
     await newClass.save();
     return res.status(201).json({ newClass });

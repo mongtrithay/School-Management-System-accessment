@@ -3,7 +3,8 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import classRoute from "./routes/classRoute.js";
 import dotenv from "dotenv";
-
+import studentRouter from "./routes/studentRoute.js";
+import authRouter from "./routes/uathRoute.js";
 // Initialize dotenv to load environment variables
 dotenv.config();
 
@@ -26,6 +27,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Football CMS application." });
 });
 
+//register
+app.use("/api/user", authRouter);
+
+//student feature
+app.use("/api/student", studentRouter);
 
 app.use("/api/class", classRoute);
 
